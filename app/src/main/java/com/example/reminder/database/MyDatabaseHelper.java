@@ -23,6 +23,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     private static final String TABLE_NAME = "binh";
     private static final String ID = "id";
     private static final String TITLE = "title";
+    private static final String CATEGORY = "category";
     private static final String DATE= "date";
     private static final String TIME = "time";
     private static final String REPEAT = "repeat";
@@ -40,6 +41,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         String sqlQuery = "CREATE TABLE "+TABLE_NAME +" (" +
                 ID +" integer primary key, "+
                 TITLE + " TEXT, "+
+                CATEGORY + " TEXT, "+
                 DATE +" TEXT, "+
                 TIME+" TEXT," +
                 REPEAT+" TEXT," +
@@ -61,14 +63,22 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(TITLE, event.getTitle());
-        //them
+        values.put(CATEGORY, event.getCategory());
+        values.put(DATE, event.getDate());
+        values.put(TIME, event.getTime());
+        values.put(REPEAT, event.getRepeat());
+        values.put(REMIND, event.getRemind());
+        values.put(RING, event.getRing());
+        values.put(THEME, event.getTheme());
+        values.put(GHIM, event.getGhim());
+
         db.insert(TABLE_NAME,null,values);
         db.close();
     }
     public Event getEventById(int id){
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_NAME, new String[] { ID,
-                        TITLE,DATE,TIME,REPEAT,REMIND,RING,THEME,GHIM }, ID + "=?",
+                        TITLE,CATEGORY,DATE,TIME,REPEAT,REMIND,RING,THEME,GHIM }, ID + "=?",
                 new String[] { String.valueOf(id) }, null, null, null, null);
 //        Cursor cursor;
 //        cursor = db.rawQuery("SELECT * FROM "+TABLE_NAME +" WHERE id = '1'",null);
@@ -83,7 +93,8 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
                 ,cursor.getString(5)
                 ,cursor.getString(6)
                 ,cursor.getString(7)
-                ,cursor.getString(8));
+                ,cursor.getString(8)
+                ,cursor.getString(9));
         cursor.close();
         db.close();
         return event;
@@ -101,13 +112,14 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
                 Event event = new Event();
                 event.setId(cursor.getInt(0));
                 event.setTitle(cursor.getString(1));
-                event.setDate(cursor.getString(2));
-                event.setTime(cursor.getString(3));
-                event.setRepeat(cursor.getString(4));
-                event.setRemind(cursor.getString(5));
-                event.setRing(cursor.getString(6));
-                event.setTheme(cursor.getString(7));
-                event.setGhim(cursor.getString(8));
+                event.setCategory(cursor.getString(2));
+                event.setDate(cursor.getString(3));
+                event.setTime(cursor.getString(4));
+                event.setRepeat(cursor.getString(5));
+                event.setRemind(cursor.getString(6));
+                event.setRing(cursor.getString(7));
+                event.setTheme(cursor.getString(8));
+                event.setGhim(cursor.getString(9));
 
                 listEvent.add(event);
             } while (cursor.moveToNext());

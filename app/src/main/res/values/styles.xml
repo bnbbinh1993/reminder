@@ -8,4 +8,13 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="CustomText" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#020202</item>
+        <item name="android:textColorHint">#7A7A7A</item>
+        <item name="android:padding">10dp</item>
+    </style>
+
+
 </resources>

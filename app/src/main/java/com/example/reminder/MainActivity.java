@@ -12,11 +12,13 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import com.example.reminder.adapter.ViewPagerAdapter;
+import com.example.reminder.database.MyDatabaseHelper;
 import com.example.reminder.ui.create.CreateActivity;
 import com.example.reminder.ui.histories.HistoriesFragment;
 import com.example.reminder.ui.follow.FollowFragment;
 import com.example.reminder.ui.setting.SettingFragment;
 import com.example.reminder.ui.work.WorkFragment;
+import com.example.reminder.utils.Binh;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,11 +30,13 @@ public class MainActivity extends AppCompatActivity {
     private WorkFragment workFragment;
     private SettingFragment settingFragment;
     private ImageButton btnCreateEvent;
+    private MyDatabaseHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        dbHelper = new MyDatabaseHelper(this);
         init();
         initEvent();
         bottmNavigationView();
@@ -114,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.addFragment(historiesFragment);
         adapter.addFragment(settingFragment);
         viewPager.setAdapter(adapter);
+
     }
 
     private void init() {

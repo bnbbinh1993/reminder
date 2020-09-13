@@ -1,21 +1,16 @@
 package com.example.reminder.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.reminder.R;
-import com.example.reminder.models.Create;
 import com.example.reminder.models.Event;
-import com.example.reminder.ui.create.CreateActivity;
-import com.example.reminder.utils.Pef;
 
 import java.util.List;
 

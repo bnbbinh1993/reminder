@@ -58,17 +58,8 @@ public class FollowFragment extends Fragment {
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),1));
         recyclerView.setAdapter(adapter);
         String a = "a";
-        list.add(new Event(1,"Đi xem phim cùng crush",a,a,a,a,a,a,a));
-        list.add(new Event(1,"Đi xem phim cùng crush 2",a,a,a,a,a,a,a));
-        list.add(new Event(1,"Đi xem phim cùng crush 3",a,a,a,a,a,a,a));
-        list.add(new Event(1,"Đi xem phim cùng crush 3",a,a,a,a,a,a,a));
-        list.add(new Event(1,"Đi xem phim cùng crush 3",a,a,a,a,a,a,a));
-        list.add(new Event(1,"Đi xem phim cùng crush 3",a,a,a,a,a,a,a));
-        list.add(new Event(1,"Đi xem phim cùng crush 3",a,a,a,a,a,a,a));
-        list.add(new Event(1,"Đi xem phim cùng crush 3",a,a,a,a,a,a,a));
-        list.add(new Event(1,"Đi xem phim cùng crush 3",a,a,a,a,a,a,a));
-        list.add(new Event(1,"Đi xem phim cùng crush 3",a,a,a,a,a,a,a));
-        list.add(new Event(1,"Đi xem phim cùng crush 3",a,a,a,a,a,a,a));
+        list.add(new Event(1,"Đi xem phim cùng crush",a,a,a,a,a,a,a,a));
+
 
 
         adapter.notifyDataSetChanged();

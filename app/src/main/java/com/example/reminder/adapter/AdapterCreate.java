@@ -1,7 +1,6 @@
 package com.example.reminder.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,15 +13,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.reminder.R;
 import com.example.reminder.models.Create;
-import com.example.reminder.ui.create.CreateActivity;
-import com.example.reminder.utils.Pef;
+import com.example.reminder.utils.Binh;
 
 import java.util.List;
 
 public class AdapterCreate extends RecyclerView.Adapter<AdapterCreate.ViewHolder> {
     private Context context;
     private List<Create> list;
-    private Pef per;
+    private Binh per;
 
     public AdapterCreate(Context context, List<Create> list) {
         this.context = context;

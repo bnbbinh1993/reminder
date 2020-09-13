@@ -62,6 +62,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
        <LinearLayout
+           android:id="@+id/titleId"
            android:padding="10dp"
            android:gravity="center"
            android:layout_gravity="center"
@@ -69,15 +70,13 @@
            android:layout_width="match_parent"
            android:layout_height="wrap_content">
            <ImageView
-               android:src="@drawable/ic_favorite_green_blue"
+               android:src="@drawable/ic_title_black_24dp"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"/>
            <EditText
-               android:padding="10dp"
-               android:textColor="@color/black"
-               android:textSize="12sp"
+               android:id="@+id/edtTitle"
+               style="@style/CustomText"
                android:layout_marginStart="10dp"
-               android:textColorHint="#7A7A7A"
                android:hint="New event title"
                android:background="@drawable/bg_text"
                android:layout_width="match_parent"
@@ -89,34 +88,58 @@
             android:background="#6B757575"
             android:layout_width="match_parent"
             android:layout_height="0.5dp"/>
-        <LinearLayout
+        <RelativeLayout
+            android:id="@+id/categoryId"
             android:padding="10dp"
-            android:gravity="center_vertical"
+            android:gravity="center"
             android:layout_gravity="center"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
-                android:src="@drawable/ic_favorite_green_blue"
+                android:layout_centerVertical="true"
+                android:id="@+id/image_category"
+                android:src="@drawable/ic_filter_list_black_24dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <TextView
-                android:padding="10dp"
-                android:textColor="@color/black"
-                android:textSize="12sp"
+                android:id="@+id/text_category"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/image_category"
+                style="@style/CustomText"
+                android:textStyle="normal"
                 android:layout_marginStart="10dp"
-                android:text="Date: 10/9/2020"
-                android:layout_width="match_parent"
+                android:text="Category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/tvCategory"
+                android:layout_toStartOf="@+id/image_category22"
+                android:textAlignment="textEnd"
+                style="@style/CustomText"
+                android:textStyle="normal"
+                android:text="Event"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <ImageView
+                android:layout_alignParentEnd="true"
+                android:id="@+id/image_category22"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
-        </LinearLayout>
+
+
+        </RelativeLayout>
         <FrameLayout
             android:layout_marginEnd="10dp"
             android:layout_marginStart="45dp"
             android:background="#6B757575"
             android:layout_width="match_parent"
             android:layout_height="0.5dp"/>
-        <LinearLayout
+        <RelativeLayout
+            android:id="@+id/dateId"
             android:padding="10dp"
             android:gravity="center"
             android:layout_gravity="center"
@@ -124,25 +147,49 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
-                android:src="@drawable/ic_favorite_green_blue"
+                android:layout_centerVertical="true"
+                android:id="@+id/image1"
+                android:src="@drawable/ic_date_range"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <TextView
-                android:padding="10dp"
-                android:textColor="@color/black"
-                android:textSize="12sp"
+                android:id="@+id/text1"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/image1"
+                style="@style/CustomText"
+                android:textStyle="normal"
                 android:layout_marginStart="10dp"
-                android:text="Time: 23:23:23"
-                android:layout_width="match_parent"
+                android:text="Date"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
-        </LinearLayout>
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_toStartOf="@+id/image11"
+                android:textAlignment="textEnd"
+                style="@style/CustomText"
+                android:textStyle="normal"
+                android:text="20/03/1999"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <ImageView
+                android:layout_alignParentEnd="true"
+                android:id="@+id/image11"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+
+        </RelativeLayout>
         <FrameLayout
             android:layout_marginEnd="10dp"
             android:layout_marginStart="45dp"
             android:background="#6B757575"
             android:layout_width="match_parent"
             android:layout_height="0.5dp"/>
-        <LinearLayout
+        <RelativeLayout
+            android:id="@+id/timeId"
             android:padding="10dp"
             android:gravity="center"
             android:layout_gravity="center"
@@ -150,25 +197,49 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
-                android:src="@drawable/ic_favorite_green_blue"
+                android:layout_centerVertical="true"
+                android:id="@+id/image2"
+                android:src="@drawable/ic_timer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <TextView
-                android:padding="10dp"
-                android:textColor="@color/black"
-                android:textSize="12sp"
+                android:id="@+id/text2"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/image2"
+                style="@style/CustomText"
+                android:textStyle="normal"
                 android:layout_marginStart="10dp"
-                android:text="Repeat: yearly"
-                android:layout_width="match_parent"
+                android:text="Time"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
-        </LinearLayout>
+            <TextView
+                android:id="@+id/tvTime"
+                android:layout_toStartOf="@+id/image22"
+                android:textAlignment="textEnd"
+                style="@style/CustomText"
+                android:textStyle="normal"
+                android:text="03:45:23"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <ImageView
+                android:layout_alignParentEnd="true"
+                android:id="@+id/image22"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+
+        </RelativeLayout>
         <FrameLayout
             android:layout_marginEnd="10dp"
             android:layout_marginStart="45dp"
             android:background="#6B757575"
             android:layout_width="match_parent"
             android:layout_height="0.5dp"/>
-        <LinearLayout
+        <RelativeLayout
+            android:id="@+id/repeatId"
             android:padding="10dp"
             android:gravity="center"
             android:layout_gravity="center"
@@ -176,25 +247,49 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
-                android:src="@drawable/ic_favorite_green_blue"
+                android:layout_centerVertical="true"
+                android:id="@+id/image_repeat1"
+                android:src="@drawable/ic_restore_black_24dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <TextView
-                android:padding="10dp"
-                android:textColor="@color/black"
-                android:textSize="12sp"
+                android:id="@+id/text3"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/image_repeat1"
+                style="@style/CustomText"
+                android:textStyle="normal"
                 android:layout_marginStart="10dp"
-                android:text="Remind: once"
-                android:layout_width="match_parent"
+                android:text="Repeat"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
-        </LinearLayout>
+            <TextView
+                android:id="@+id/tvRepeat"
+                android:layout_toStartOf="@+id/image_repeat"
+                android:textAlignment="textEnd"
+                style="@style/CustomText"
+                android:textStyle="normal"
+                android:text="Hằng năm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <ImageView
+                android:layout_alignParentEnd="true"
+                android:id="@+id/image_repeat"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+
+        </RelativeLayout>
         <FrameLayout
             android:layout_marginEnd="10dp"
             android:layout_marginStart="45dp"
             android:background="#6B757575"
             android:layout_width="match_parent"
             android:layout_height="0.5dp"/>
-        <LinearLayout
+        <RelativeLayout
+            android:id="@+id/remindId"
             android:padding="10dp"
             android:gravity="center"
             android:layout_gravity="center"
@@ -202,25 +297,49 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
-                android:src="@drawable/ic_favorite_green_blue"
+                android:layout_centerVertical="true"
+                android:id="@+id/image_notification"
+                android:src="@drawable/ic_notifications_none_black_24dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <TextView
-                android:padding="10dp"
-                android:textColor="@color/black"
-                android:textSize="12sp"
+                android:id="@+id/text_notification"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/image_notification"
+                style="@style/CustomText"
+                android:textStyle="normal"
                 android:layout_marginStart="10dp"
-                android:text="Ring: default"
-                android:layout_width="match_parent"
+                android:text="Remind"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
-        </LinearLayout>
+            <TextView
+                android:id="@+id/tvRemind"
+                android:layout_toStartOf="@+id/image_notification1"
+                android:textAlignment="textEnd"
+                style="@style/CustomText"
+                android:textStyle="normal"
+                android:text="Trước 1 tuần"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <ImageView
+                android:layout_alignParentEnd="true"
+                android:id="@+id/image_notification1"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+
+        </RelativeLayout>
         <FrameLayout
             android:layout_marginEnd="10dp"
             android:layout_marginStart="45dp"
             android:background="#6B757575"
             android:layout_width="match_parent"
             android:layout_height="0.5dp"/>
-        <LinearLayout
+        <RelativeLayout
+            android:id="@+id/ringId"
             android:padding="10dp"
             android:gravity="center"
             android:layout_gravity="center"
@@ -228,18 +347,91 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
-                android:src="@drawable/ic_favorite_green_blue"
+                android:layout_centerVertical="true"
+                android:id="@+id/image_Ring"
+                android:src="@drawable/ic_music_video_black_24dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <TextView
-                android:padding="10dp"
-                android:textColor="@color/black"
-                android:textSize="12sp"
+                android:id="@+id/tvRing1"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/image_Ring"
+                style="@style/CustomText"
+                android:textStyle="normal"
                 android:layout_marginStart="10dp"
-                android:text="Theme: default"
-                android:layout_width="match_parent"
+                android:text="Ring"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
-        </LinearLayout>
+            <TextView
+                android:id="@+id/tvRing"
+                android:layout_toStartOf="@+id/image_Ring1"
+                android:textAlignment="textEnd"
+                style="@style/CustomText"
+                android:textStyle="normal"
+                android:text="Default"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <ImageView
+                android:layout_alignParentEnd="true"
+                android:id="@+id/image_Ring1"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+
+        </RelativeLayout>
+        <FrameLayout
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="45dp"
+            android:background="#6B757575"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"/>
+        <RelativeLayout
+            android:id="@+id/wallpaperId"
+            android:padding="10dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_centerVertical="true"
+                android:id="@+id/image_wallpaper1"
+                android:src="@drawable/ic_wallpaper_black_24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/text_wallpaper"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/image_wallpaper1"
+                style="@style/CustomText"
+                android:textStyle="normal"
+                android:layout_marginStart="10dp"
+                android:text="Wallpaper"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/tvWallpaper"
+                android:layout_toStartOf="@+id/image_wallpaper"
+                android:textAlignment="textEnd"
+                style="@style/CustomText"
+                android:textStyle="normal"
+                android:text="Default"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <ImageView
+                android:layout_alignParentEnd="true"
+                android:id="@+id/image_wallpaper"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+
+        </RelativeLayout>
 
     </LinearLayout>
 

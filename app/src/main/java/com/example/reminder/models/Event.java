@@ -3,6 +3,7 @@ package com.example.reminder.models;
 public class Event {
     private int id;
     private String title;
+    private String category;
     private String date;
     private String time;
     private String repeat;
@@ -14,9 +15,10 @@ public class Event {
     public Event() {
     }
 
-    public Event(int id, String title, String date, String time, String repeat, String remind, String ring, String theme, String ghim) {
+    public Event(int id, String title, String category, String date, String time, String repeat, String remind, String ring, String theme, String ghim) {
         this.id = id;
         this.title = title;
+        this.category = category;
         this.date = date;
         this.time = time;
         this.repeat = repeat;
@@ -40,6 +42,14 @@ public class Event {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public String getDate() {
