@@ -52,6 +52,8 @@ public class CreateActivity extends AppCompatActivity {
         setCategory();
         setDate();
         setTime();
+        setRepeat();
+        setRemind();
     }
 
     private void init() {
@@ -66,8 +68,6 @@ public class CreateActivity extends AppCompatActivity {
         tvWallpaper = findViewById(R.id.tvWallpaper);
         Title = findViewById(R.id.titleId);
     }
-
-
     private void setCategory() {
 
         tvCategory.setOnClickListener(new View.OnClickListener() {
@@ -166,8 +166,106 @@ public class CreateActivity extends AppCompatActivity {
     }
 
     private void setRepeat(){
-        
+        tvRepeat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final BottomSheetDialog sheetDialog = new BottomSheetDialog(CreateActivity.this);
+                View v = LayoutInflater.from(CreateActivity.this).inflate(R.layout.bottom_sheet_repeat, null);
+                TextView never = v.findViewById(R.id.never);
+                TextView everyday = v.findViewById(R.id.everyday);
+                TextView everyweek = v.findViewById(R.id.everyweek);
+                TextView everymonth = v.findViewById(R.id.everymonth);
+                TextView everyyear = v.findViewById(R.id.everyyear);
+                sheetDialog.setContentView(v);
+                sheetDialog.show();
+
+                never.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        tvRepeat.setText("never");
+                        sheetDialog.dismiss();
+                    }
+                });
+                everyday.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        tvRepeat.setText("never");
+                        sheetDialog.dismiss();
+                    }
+                });
+                everyweek.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        tvRepeat.setText("never");
+                        sheetDialog.dismiss();
+                    }
+                });
+                everymonth.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        tvRepeat.setText("never");
+                        sheetDialog.dismiss();
+                    }
+                });
+                everyyear.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        tvRepeat.setText("never");
+                        sheetDialog.dismiss();
+                    }
+                });
+            }
+        });
+
     }
+    private void setRemind(){
+        tvRemind.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final BottomSheetDialog sheetDialog = new BottomSheetDialog(CreateActivity.this);
+                View v = LayoutInflater.from(CreateActivity.this).inflate(R.layout.bottom_sheet_remind, null);
+                TextView option1 = v.findViewById(R.id.option1);
+                TextView option2 = v.findViewById(R.id.option2);
+                TextView option3 = v.findViewById(R.id.option3);
+                TextView option4 = v.findViewById(R.id.option4);
+
+                sheetDialog.setContentView(v);
+                sheetDialog.show();
+
+                option1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        tvRemind.setText("Trước 1 giờ và đúng giờ");
+                        sheetDialog.dismiss();
+                    }
+                });
+                option2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        tvRemind.setText("Trước 1 ngày");
+                        sheetDialog.dismiss();
+                    }
+                });
+                option3.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        tvRemind.setText("Trước 1 tuần");
+                        sheetDialog.dismiss();
+                    }
+                });
+                option4.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        tvRemind.setText("Trước 1 tháng");
+                        sheetDialog.dismiss();
+                    }
+                });
+
+            }
+        });
+
+    }
+
 
     private void pushData() {
         String title = edtTitle.getText().toString().trim();

@@ -10,14 +10,38 @@
         android:textSize="16sp"
         android:textStyle="bold"
         android:textAlignment="center"
-        android:text="Repeat"
+        android:text="Remind"
         style="@style/CustomText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
     <TextView
-        android:id="@+id/never"
+        android:id="@+id/option1"
+        style="@style/CustomText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:padding="15dp"
-        android:text="Never"
+        android:text="Trước 1 giờ và đúng giờ" />
+    <FrameLayout
+        android:background="#6B757575"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"/>
+
+    <TextView
+        android:id="@+id/option2"
+        style="@style/CustomText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:text="Trước 1 ngày" />
+    <FrameLayout
+        android:background="#6B757575"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"/>
+    <TextView
+        android:id="@+id/option3"
+        android:padding="15dp"
+        android:text="Trước 1 tuần"
         style="@style/CustomText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -26,9 +50,9 @@
         android:layout_width="match_parent"
         android:layout_height="0.5dp"/>
     <TextView
-        android:id="@+id/everyday"
+        android:id="@+id/option4"
         android:padding="15dp"
-        android:text="Every day "
+        android:text="Trước 1 Tháng"
         style="@style/CustomText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -36,39 +60,7 @@
         android:background="#6B757575"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"/>
-    <TextView
-        android:id="@+id/everyweek"
-        android:padding="15dp"
-        android:text="Every week"
-        style="@style/CustomText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <FrameLayout
-        android:background="#6B757575"
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"/>
-    <TextView
-        android:id="@+id/everymonth"
-        android:padding="15dp"
-        android:text="Every month"
-        style="@style/CustomText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <FrameLayout
-        android:background="#6B757575"
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"/>
-    <TextView
-        android:id="@+id/everyyear"
-        android:padding="15dp"
-        android:text="Every year"
-        style="@style/CustomText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <FrameLayout
-        android:background="#6B757575"
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"/>
+
 
 
 
