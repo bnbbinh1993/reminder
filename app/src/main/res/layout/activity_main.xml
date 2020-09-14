@@ -95,7 +95,7 @@
                    android:padding="5dp"
                    android:background="?attr/actionBarItemBackground"
                    android:layout_gravity="end"
-                   android:src="@drawable/ic_favorite_green_blue"
+                   android:src="@drawable/ic_add_red"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"/>
            </LinearLayout>

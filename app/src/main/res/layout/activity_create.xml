@@ -18,6 +18,7 @@
            android:layout_width="match_parent"
            android:layout_height="wrap_content">
            <TextView
+               android:id="@+id/exitId"
                android:textAlignment="textStart"
                android:paddingStart="20dp"
                android:paddingEnd="10dp"
@@ -98,14 +99,14 @@
             android:layout_height="wrap_content">
             <ImageView
                 android:layout_centerVertical="true"
-                android:id="@+id/image_category"
+                android:id="@+id/image_category22"
                 android:src="@drawable/ic_filter_list_black_24dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <TextView
                 android:id="@+id/text_category"
                 android:layout_centerVertical="true"
-                android:layout_toEndOf="@+id/image_category"
+                android:layout_toEndOf="@+id/image_category22"
                 style="@style/CustomText"
                 android:textStyle="normal"
                 android:layout_marginStart="10dp"
@@ -115,7 +116,7 @@
             <TextView
 
                 android:id="@+id/tvCategory"
-                android:layout_toStartOf="@+id/image_category22"
+                android:layout_toStartOf="@+id/image_category"
                 android:textAlignment="textEnd"
                 style="@style/CustomText"
                 android:textStyle="normal"
@@ -124,7 +125,7 @@
                 android:layout_height="wrap_content"/>
             <ImageView
                 android:layout_alignParentEnd="true"
-                android:id="@+id/image_category22"
+                android:id="@+id/image_category"
                 android:layout_centerVertical="true"
                 android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
                 android:layout_width="wrap_content"
@@ -165,7 +166,7 @@
                 android:layout_height="wrap_content"/>
             <TextView
                 android:id="@+id/tvDate"
-                android:layout_toStartOf="@+id/image11"
+                android:layout_toStartOf="@+id/image_date"
                 android:textAlignment="textEnd"
                 style="@style/CustomText"
                 android:textStyle="normal"
@@ -175,7 +176,7 @@
 
             <ImageView
                 android:layout_alignParentEnd="true"
-                android:id="@+id/image11"
+                android:id="@+id/image_date"
                 android:layout_centerVertical="true"
                 android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
                 android:layout_width="wrap_content"
@@ -216,7 +217,7 @@
                 android:layout_height="wrap_content"/>
             <TextView
                 android:id="@+id/tvTime"
-                android:layout_toStartOf="@+id/image22"
+                android:layout_toStartOf="@+id/image_time"
                 android:textAlignment="textEnd"
                 style="@style/CustomText"
                 android:textStyle="normal"
@@ -225,7 +226,7 @@
                 android:layout_height="wrap_content"/>
             <ImageView
                 android:layout_alignParentEnd="true"
-                android:id="@+id/image22"
+                android:id="@+id/image_time"
                 android:layout_centerVertical="true"
                 android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
                 android:layout_width="wrap_content"
@@ -316,7 +317,7 @@
                 android:layout_height="wrap_content"/>
             <TextView
                 android:id="@+id/tvRemind"
-                android:layout_toStartOf="@+id/image_notification1"
+                android:layout_toStartOf="@+id/image_remind"
                 android:textAlignment="textEnd"
                 style="@style/CustomText"
                 android:textStyle="normal"
@@ -325,7 +326,7 @@
                 android:layout_height="wrap_content"/>
             <ImageView
                 android:layout_alignParentEnd="true"
-                android:id="@+id/image_notification1"
+                android:id="@+id/image_remind"
                 android:layout_centerVertical="true"
                 android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
                 android:layout_width="wrap_content"
@@ -366,7 +367,7 @@
                 android:layout_height="wrap_content"/>
             <TextView
                 android:id="@+id/tvRing"
-                android:layout_toStartOf="@+id/image_Ring1"
+                android:layout_toStartOf="@+id/image_ring"
                 android:textAlignment="textEnd"
                 style="@style/CustomText"
                 android:textStyle="normal"
@@ -375,7 +376,7 @@
                 android:layout_height="wrap_content"/>
             <ImageView
                 android:layout_alignParentEnd="true"
-                android:id="@+id/image_Ring1"
+                android:id="@+id/image_ring"
                 android:layout_centerVertical="true"
                 android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
                 android:layout_width="wrap_content"

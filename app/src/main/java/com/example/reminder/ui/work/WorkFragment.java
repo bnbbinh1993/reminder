@@ -43,7 +43,8 @@ public class WorkFragment extends Fragment {
         recylerviewId.setAdapter(adapter);
 
         list.add(new Create("Hẹn giờ",R.drawable.ic_card_travel_pink_24dp));
-        list.add(new Create("Sự kiện",R.drawable.ic_card_travel_pink_24dp));
+        list.add(new Create("Bộ bấm giờ",R.drawable.ic_card_travel_pink_24dp));
+        list.add(new Create("Bộ đếm giờ",R.drawable.ic_card_travel_pink_24dp));
         list.add(new Create("Bộ đếm ngày",R.drawable.ic_card_travel_pink_24dp));
         list.add(new Create("Bộ đếm tuổi",R.drawable.ic_card_travel_pink_24dp));
         list.add(new Create("Lịch cá nhân",R.drawable.ic_card_travel_pink_24dp));
