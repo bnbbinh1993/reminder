@@ -35,6 +35,8 @@ public class FollowFragment extends Fragment {
     private TextView textHour;
     private TextView textMunite;
     private TextView textSecond;
+    private  Timer timer;
+    private  TimerTask timerTask;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -71,8 +73,8 @@ public class FollowFragment extends Fragment {
     }
     private void setTimer() {
 
-        Timer timer = new Timer();
-        TimerTask timerTask = new TimerTask() {
+        timer= new Timer();
+        timerTask = new TimerTask() {
             @Override
             public void run() {
                 getActivity().runOnUiThread(new Runnable() {
@@ -92,5 +94,10 @@ public class FollowFragment extends Fragment {
         timer.scheduleAtFixedRate(timerTask, 0, 1000);
     }
 
-
+    @Override
+    public void onPause() {
+        super.onPause();
+        timer.cancel();
+        timerTask.cancel();
+    }
 }
