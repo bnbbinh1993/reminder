@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:gravity="center"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.work.ui.StopwatchActivity">
+    <TextView
+        android:id="@+id/exitStopwatchId"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:text="Hủy"
+        android:padding="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_marginTop="100dp"
+        android:id="@+id/timeCoutTotal"
+        android:textAlignment="center"
+        android:textSize="45sp"
+        android:text="00:01.23"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/timeCout"
+        android:layout_below="@+id/timeCoutTotal"
+        android:layout_marginBottom="20dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:text="00:01.23"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+   <LinearLayout
+       android:layout_above="@id/viewBottom"
+       android:layout_below="@+id/timeCout"
+       android:orientation="vertical"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+       <LinearLayout
+           android:padding="10dp"
+           android:orientation="horizontal"
+           android:gravity="center"
+           android:weightSum="5"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+           <TextView
+               android:gravity="center"
+               android:text="Vòng lặp"
+               android:layout_weight="1"
+               android:layout_width="0dp"
+               android:layout_height="match_parent"/>
+           <TextView
+               android:gravity="center"
+               android:text="Thời gian vòng lặp"
+               android:layout_weight="2"
+               android:layout_width="0dp"
+               android:layout_height="match_parent"/>
+           <TextView
+               android:gravity="center"
+               android:text="Tổng thời gian"
+               android:layout_weight="2"
+               android:layout_width="0dp"
+               android:layout_height="match_parent"/>
+       </LinearLayout>
+       <FrameLayout
+           android:layout_marginStart="20dp"
+           android:layout_marginEnd="20dp"
+           android:layout_marginBottom="5dp"
+           android:layout_marginTop="5dp"
+           android:background="#D35E5E5E"
+           android:layout_width="match_parent"
+           android:layout_height="0.5dp"/>
+       <androidx.recyclerview.widget.RecyclerView
+           android:layout_marginStart="10dp"
+           android:layout_marginEnd="10dp"
+           android:id="@+id/recylerviewTimeCount"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"/>
+   </LinearLayout>
+    <LinearLayout
+        android:padding="10dp"
+        android:gravity="center"
+        android:id="@+id/viewBottom"
+        android:layout_marginBottom="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textAllCaps="false"
+            android:text="Bắt đầu"
+            android:background="@drawable/bg_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.work.ui.TimerActivity"></activity>
+        <activity android:name=".ui.work.ui.NoteActivity"></activity>
+        <activity android:name=".ui.work.ui.CountAgeActivity" />
+        <activity android:name=".ui.work.ui.CountDayActivity" />
+        <activity android:name=".ui.work.ui.CountTImeActivity" />
+        <activity android:name=".ui.work.ui.StopwatchActivity" />
+        <activity android:name=".ui.work.ui.TimerActivity" />
         <activity android:name=".ui.create.CreateActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

@@ -1,6 +1,7 @@
 package com.example.reminder.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.reminder.R;
 import com.example.reminder.models.Create;
+import com.example.reminder.ui.work.ui.StopwatchActivity;
+import com.example.reminder.ui.work.ui.TimerActivity;
 import com.example.reminder.utils.Binh;
 
 import java.util.List;
@@ -42,7 +45,25 @@ public class AdapterCreate extends RecyclerView.Adapter<AdapterCreate.ViewHolder
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "Hello world!", Toast.LENGTH_SHORT).show();
+                switch (position){
+                    case 0:{
+                        context.startActivity(new Intent(context, TimerActivity.class));
+                        break;
+                    }
+                    case 1:{
+                        context.startActivity(new Intent(context, StopwatchActivity.class));
+                        break;
+                    }
+                    case 2:{
+                        //context.startActivity(new Intent(context, StopwatchActivity.class));
+                       break;
+                    }
+                    case 3:{
+                        //context.startActivity(new Intent(context, StopwatchActivity.class));
+                        break;
+                    }
+                    default: break;
+                }
 
             }
         });

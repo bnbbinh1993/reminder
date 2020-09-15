@@ -3,10 +3,12 @@ package com.example.reminder.ui.follow;
 
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -72,32 +74,23 @@ public class FollowFragment extends Fragment {
 
     }
     private void setTimer() {
-
-        timer= new Timer();
-        timerTask = new TimerTask() {
+        CountDownTimer count = new CountDownTimer(60000,1000) {
             @Override
-            public void run() {
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-//        String date =""+ c.get(Calendar.YEAR) + c.get(Calendar.MONTH) + c.get(Calendar.DATE);
-//        String time = ""+c.get(Calendar.HOUR) + c.get(Calendar.MINUTE) + c.get(Calendar.SECOND);
-                        Calendar c = Calendar.getInstance();
-                        textDay.setText(String.valueOf(c.get(Calendar.DATE)));
-                        textHour.setText(String.valueOf(c.get(Calendar.HOUR)));
-                        textMunite.setText(String.valueOf(c.get(Calendar.MINUTE)));
-                        textSecond.setText(String.valueOf(c.get(Calendar.SECOND)));
-                    }
-                });
+            public void onTick(long l) {
+                Calendar c = Calendar.getInstance();
+                textDay.setText(String.valueOf(c.get(Calendar.DATE)));
+                textHour.setText(String.valueOf(c.get(Calendar.HOUR)));
+                textMunite.setText(String.valueOf(c.get(Calendar.MINUTE)));
+                textSecond.setText(String.valueOf(c.get(Calendar.SECOND)));
             }
-        };
-        timer.scheduleAtFixedRate(timerTask, 0, 1000);
+
+            @Override
+            public void onFinish() {
+                setTimer();
+            }
+        }.start();
+
     }
 
-    @Override
-    public void onPause() {
-        super.onPause();
-        timer.cancel();
-        timerTask.cancel();
-    }
+
 }
