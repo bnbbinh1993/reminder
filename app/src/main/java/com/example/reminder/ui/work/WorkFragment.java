@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.reminder.R;
-import com.example.reminder.adapter.AdapterCreate;
+import com.example.reminder.adapter.AdapterWork;
 import com.example.reminder.models.Create;
 
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ import java.util.ArrayList;
 public class WorkFragment extends Fragment {
 
     private RecyclerView recylerviewId;
-    private AdapterCreate adapter;
+    private AdapterWork adapter;
     private ArrayList<Create> list;
 
     @Override
@@ -37,7 +37,7 @@ public class WorkFragment extends Fragment {
     private void init(View view) {
         list = new ArrayList<>();
         recylerviewId = view.findViewById(R.id.recylerviewId);
-        adapter = new AdapterCreate(getContext(),list);
+        adapter = new AdapterWork(getContext(),list);
         recylerviewId.setHasFixedSize(true);
         recylerviewId.setLayoutManager(new GridLayoutManager(getContext(),1));
         recylerviewId.setAdapter(adapter);

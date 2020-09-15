@@ -7,25 +7,28 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.reminder.R;
 import com.example.reminder.models.Create;
+import com.example.reminder.ui.work.ui.CountAgeActivity;
+import com.example.reminder.ui.work.ui.CountDayActivity;
+import com.example.reminder.ui.work.ui.CountTImeActivity;
+import com.example.reminder.ui.work.ui.NoteActivity;
 import com.example.reminder.ui.work.ui.StopwatchActivity;
 import com.example.reminder.ui.work.ui.TimerActivity;
 import com.example.reminder.utils.Binh;
 
 import java.util.List;
 
-public class AdapterCreate extends RecyclerView.Adapter<AdapterCreate.ViewHolder> {
+public class AdapterWork extends RecyclerView.Adapter<AdapterWork.ViewHolder> {
     private Context context;
     private List<Create> list;
     private Binh per;
 
-    public AdapterCreate(Context context, List<Create> list) {
+    public AdapterWork(Context context, List<Create> list) {
         this.context = context;
         this.list = list;
     }
@@ -55,11 +58,19 @@ public class AdapterCreate extends RecyclerView.Adapter<AdapterCreate.ViewHolder
                         break;
                     }
                     case 2:{
-                        //context.startActivity(new Intent(context, StopwatchActivity.class));
+                        context.startActivity(new Intent(context, CountTImeActivity.class));
                        break;
                     }
                     case 3:{
-                        //context.startActivity(new Intent(context, StopwatchActivity.class));
+                        context.startActivity(new Intent(context, CountDayActivity.class));
+                        break;
+                    }
+                    case 4:{
+                        context.startActivity(new Intent(context, CountAgeActivity.class));
+                        break;
+                    }
+                    case 5:{
+                        context.startActivity(new Intent(context, NoteActivity.class));
                         break;
                     }
                     default: break;
