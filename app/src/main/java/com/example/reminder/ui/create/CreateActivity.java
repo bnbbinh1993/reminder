@@ -1,8 +1,5 @@
 package com.example.reminder.ui.create;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
@@ -12,16 +9,14 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.reminder.R;
 import com.example.reminder.database.MyDatabaseHelper;
-import com.example.reminder.models.Event;
 import com.example.reminder.utils.Binh;
-import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.Calendar;
@@ -140,13 +135,13 @@ public class CreateActivity extends AppCompatActivity {
     }
 
     private void setView() {
-        tvRemind.setText(binh.getDataString("REMIND","Trước 1 tuần"));
-        tvCategory.setText(binh.getDataString("EVENT","Sinh nhật"));
-        tvDate.setText(binh.getDataString("DATE","20/03/1999"));
-        tvTime.setText(binh.getDataString("TIME","20:20"));
-        tvRepeat.setText(binh.getDataString("REPEAT","Hằng năm"));
-        tvRing.setText(binh.getDataString("RING","Mặc định"));
-        tvWallpaper.setText(binh.getDataString("WALLPAPER","Mặc định"));
+        tvRemind.setText(binh.getDataString("REMIND", "Trước 1 tuần"));
+        tvCategory.setText(binh.getDataString("EVENT", "Sinh nhật"));
+        tvDate.setText(binh.getDataString("DATE", "20/03/1999"));
+        tvTime.setText(binh.getDataString("TIME", "20:20"));
+        tvRepeat.setText(binh.getDataString("REPEAT", "Hằng năm"));
+        tvRing.setText(binh.getDataString("RING", "Mặc định"));
+        tvWallpaper.setText(binh.getDataString("WALLPAPER", "Mặc định"));
 
     }
 
@@ -170,6 +165,7 @@ public class CreateActivity extends AppCompatActivity {
         image_ring = findViewById(R.id.image_ring);
         image_wallpaper = findViewById(R.id.image_wallpaper);
     }
+
     private void setCategory() {
 
         final BottomSheetDialog sheetDialog = new BottomSheetDialog(CreateActivity.this);
@@ -185,7 +181,7 @@ public class CreateActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 tvCategory.setText("Sinh nhật");
-                binh.SaveString("EVENT","Sinh nhật");
+                binh.SaveString("EVENT", "Sinh nhật");
                 sheetDialog.dismiss();
             }
         });
@@ -193,14 +189,14 @@ public class CreateActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 tvCategory.setText("Sự kiện");
-                binh.SaveString("EVENT","sự kiện");
+                binh.SaveString("EVENT", "sự kiện");
                 sheetDialog.dismiss();
             }
         });
         loveId.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                binh.SaveString("EVENT","Tình yêu");
+                binh.SaveString("EVENT", "Tình yêu");
                 tvCategory.setText("Tình yêu");
                 sheetDialog.dismiss();
             }
@@ -208,13 +204,14 @@ public class CreateActivity extends AppCompatActivity {
         workId.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                binh.SaveString("EVENT","Công việc");
+                binh.SaveString("EVENT", "Công việc");
                 tvCategory.setText("Công việc");
                 sheetDialog.dismiss();
             }
         });
     }
-    private void setDate(){
+
+    private void setDate() {
         final Calendar cldr = Calendar.getInstance();
         int day = cldr.get(Calendar.DAY_OF_MONTH);
         int month = cldr.get(Calendar.MONTH);
@@ -225,13 +222,14 @@ public class CreateActivity extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                         tvDate.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
-                        binh.SaveString("DATE",tvDate.getText().toString());
+                        binh.SaveString("DATE", tvDate.getText().toString());
                     }
                 }, year, month, day);
 
         picker.show();
     }
-    private void setTime(){
+
+    private void setTime() {
 
         final Calendar myCalender = Calendar.getInstance();
         final int hour = myCalender.get(Calendar.HOUR_OF_DAY);
@@ -244,8 +242,8 @@ public class CreateActivity extends AppCompatActivity {
                 if (view.isShown()) {
                     myCalender.set(Calendar.HOUR_OF_DAY, hourOfDay);
                     myCalender.set(Calendar.MINUTE, minute);
-                    tvTime.setText(hourOfDay+":"+minute);
-                    binh.SaveString("TIME",tvTime.getText().toString());
+                    tvTime.setText(hourOfDay + ":" + minute);
+                    binh.SaveString("TIME", tvTime.getText().toString());
                 }
             }
         };
@@ -255,7 +253,8 @@ public class CreateActivity extends AppCompatActivity {
         timePickerDialog.show();
 
     }
-    private void setRepeat(){
+
+    private void setRepeat() {
         final BottomSheetDialog sheetDialog = new BottomSheetDialog(CreateActivity.this);
         View v = LayoutInflater.from(CreateActivity.this).inflate(R.layout.bottom_sheet_repeat, null);
         TextView never = v.findViewById(R.id.never);
@@ -270,7 +269,7 @@ public class CreateActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 tvRepeat.setText("Không bao giờ");
-                binh.SaveString("REPEAT","Không bao giờ");
+                binh.SaveString("REPEAT", "Không bao giờ");
                 sheetDialog.dismiss();
             }
         });
@@ -278,14 +277,14 @@ public class CreateActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 tvRepeat.setText("Hằng ngày");
-                binh.SaveString("REPEAT","Hằng ngày");
+                binh.SaveString("REPEAT", "Hằng ngày");
                 sheetDialog.dismiss();
             }
         });
         everyweek.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                binh.SaveString("REPEAT","Hằng tuần");
+                binh.SaveString("REPEAT", "Hằng tuần");
                 tvRepeat.setText("Hằng tuần");
                 sheetDialog.dismiss();
             }
@@ -294,7 +293,7 @@ public class CreateActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 tvRepeat.setText("Hằng tháng");
-                binh.SaveString("REPEAT","Hằng tháng");
+                binh.SaveString("REPEAT", "Hằng tháng");
                 sheetDialog.dismiss();
             }
         });
@@ -302,13 +301,14 @@ public class CreateActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 tvRepeat.setText("Hằng năm");
-                binh.SaveString("REPEAT","Hằng năm");
+                binh.SaveString("REPEAT", "Hằng năm");
                 sheetDialog.dismiss();
             }
         });
 
     }
-    private void setRemind(){
+
+    private void setRemind() {
         final BottomSheetDialog sheetDialog = new BottomSheetDialog(CreateActivity.this);
         View v = LayoutInflater.from(CreateActivity.this).inflate(R.layout.bottom_sheet_remind, null);
         TextView option1 = v.findViewById(R.id.option1);
@@ -323,7 +323,7 @@ public class CreateActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 tvRemind.setText("Trước 1 giờ và đúng giờ");
-                binh.SaveString("REPEAT","Trước 1 giờ và đúng giờ");
+                binh.SaveString("REPEAT", "Trước 1 giờ và đúng giờ");
                 sheetDialog.dismiss();
             }
         });
@@ -331,14 +331,14 @@ public class CreateActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 tvRemind.setText("Trước 1 ngày");
-                binh.SaveString("REPEAT","Trước 1 ngày");
+                binh.SaveString("REPEAT", "Trước 1 ngày");
                 sheetDialog.dismiss();
             }
         });
         option3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                binh.SaveString("REPEAT","Trước 1 tuần");
+                binh.SaveString("REPEAT", "Trước 1 tuần");
                 tvRemind.setText("Trước 1 tuần");
                 sheetDialog.dismiss();
             }
@@ -346,7 +346,7 @@ public class CreateActivity extends AppCompatActivity {
         option4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                binh.SaveString("REPEAT","Trước 1 tháng");
+                binh.SaveString("REPEAT", "Trước 1 tháng");
                 tvRemind.setText("Trước 1 tháng");
                 sheetDialog.dismiss();
             }
