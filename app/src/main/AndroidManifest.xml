@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ShowEventActivity"></activity>
+        <activity android:name=".ui.work.ui.ShowNoteActivity"></activity>
+        <activity android:name=".ui.work.ui.CreateNoteActitivy" />
+        <activity android:name=".ShowEventActivity" />
         <activity android:name=".ui.work.ui.NoteActivity" />
         <activity android:name=".ui.work.ui.CountAgeActivity" />
         <activity android:name=".ui.work.ui.CountDayActivity" />

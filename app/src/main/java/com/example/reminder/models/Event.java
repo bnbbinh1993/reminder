@@ -3,6 +3,7 @@ package com.example.reminder.models;
 public class Event {
     private int id;
     private String title;
+    private String description;
     private String category;
     private String date;
     private String time;
@@ -11,13 +12,15 @@ public class Event {
     private String ring;
     private String theme;
     private String ghim;
+    private String status;
 
     public Event() {
     }
 
-    public Event(int id, String title, String category, String date, String time, String repeat, String remind, String ring, String theme, String ghim) {
+    public Event(int id, String title, String description, String category, String date, String time, String repeat, String remind, String ring, String theme, String ghim, String status) {
         this.id = id;
         this.title = title;
+        this.description = description;
         this.category = category;
         this.date = date;
         this.time = time;
@@ -26,6 +29,7 @@ public class Event {
         this.ring = ring;
         this.theme = theme;
         this.ghim = ghim;
+        this.status = status;
     }
 
     public int getId() {
@@ -42,6 +46,14 @@ public class Event {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getCategory() {
@@ -106,5 +118,13 @@ public class Event {
 
     public void setGhim(String ghim) {
         this.ghim = ghim;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

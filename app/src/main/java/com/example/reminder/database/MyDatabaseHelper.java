@@ -23,6 +23,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     private static final String TABLE_NAME = "binh";
     private static final String ID = "id";
     private static final String TITLE = "title";
+    private static final String DESCRIPTON = "description";
     private static final String CATEGORY = "category";
     private static final String DATE= "date";
     private static final String TIME = "time";
@@ -31,6 +32,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     private static final String RING = "ring";
     private static final String THEME = "theme";
     private static final String GHIM = "ghim";
+    private static final String STATUS = "status";
     public MyDatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.context = context;
@@ -41,6 +43,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         String sqlQuery = "CREATE TABLE "+TABLE_NAME +" (" +
                 ID +" integer primary key, "+
                 TITLE + " TEXT, "+
+                DESCRIPTON + " TEXT, "+
                 CATEGORY + " TEXT, "+
                 DATE +" TEXT, "+
                 TIME+" TEXT," +
@@ -48,7 +51,8 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
                 REMIND+" TEXT," +
                 RING+" TEXT," +
                 THEME+" TEXT," +
-                GHIM +" TEXT)";
+                GHIM+" TEXT," +
+                STATUS +" TEXT)";
         db.execSQL(sqlQuery);
         Toast.makeText(context, "Create successfylly", Toast.LENGTH_SHORT).show();
     }
@@ -63,6 +67,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(TITLE, event.getTitle());
+        values.put(DESCRIPTON, event.getDescription());
         values.put(CATEGORY, event.getCategory());
         values.put(DATE, event.getDate());
         values.put(TIME, event.getTime());
@@ -71,14 +76,16 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         values.put(RING, event.getRing());
         values.put(THEME, event.getTheme());
         values.put(GHIM, event.getGhim());
+        values.put(STATUS, event.getStatus());
 
         db.insert(TABLE_NAME,null,values);
         db.close();
+        Toast.makeText(context, "Đã thêm thành công", Toast.LENGTH_SHORT).show();
     }
     public Event getEventById(int id){
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_NAME, new String[] { ID,
-                        TITLE,CATEGORY,DATE,TIME,REPEAT,REMIND,RING,THEME,GHIM }, ID + "=?",
+                        TITLE,DESCRIPTON,CATEGORY,DATE,TIME,REPEAT,REMIND,RING,THEME,GHIM,STATUS }, ID + "=?",
                 new String[] { String.valueOf(id) }, null, null, null, null);
 //        Cursor cursor;
 //        cursor = db.rawQuery("SELECT * FROM "+TABLE_NAME +" WHERE id = '1'",null);
@@ -94,7 +101,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
                 ,cursor.getString(6)
                 ,cursor.getString(7)
                 ,cursor.getString(8)
-                ,cursor.getString(9));
+                ,cursor.getString(9)
+                ,cursor.getString(10)
+                ,cursor.getString(11));
         cursor.close();
         db.close();
         return event;
@@ -112,14 +121,16 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
                 Event event = new Event();
                 event.setId(cursor.getInt(0));
                 event.setTitle(cursor.getString(1));
-                event.setCategory(cursor.getString(2));
-                event.setDate(cursor.getString(3));
-                event.setTime(cursor.getString(4));
-                event.setRepeat(cursor.getString(5));
-                event.setRemind(cursor.getString(6));
-                event.setRing(cursor.getString(7));
-                event.setTheme(cursor.getString(8));
-                event.setGhim(cursor.getString(9));
+                event.setDescription(cursor.getString(2));
+                event.setCategory(cursor.getString(3));
+                event.setDate(cursor.getString(4));
+                event.setTime(cursor.getString(5));
+                event.setRepeat(cursor.getString(6));
+                event.setRemind(cursor.getString(7));
+                event.setRing(cursor.getString(8));
+                event.setTheme(cursor.getString(9));
+                event.setGhim(cursor.getString(10));
+                event.setStatus(cursor.getString(11));
 
                 listEvent.add(event);
             } while (cursor.moveToNext());

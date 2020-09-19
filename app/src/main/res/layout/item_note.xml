@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:padding="10dp"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:maxWidth="100dp"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        android:text="Bùi ngọc bình ahadshaiodhais"
+        android:id="@+id/textNoteId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:textAlignment="textEnd"
+        android:text="23/23/2020"
+        android:textSize="13sp"
+        android:textColor="@color/black"
+        android:id="@+id/textDateNote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <View
+        android:layout_margin="10dp"
+        android:background="#85BCBCBC"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+</LinearLayout>

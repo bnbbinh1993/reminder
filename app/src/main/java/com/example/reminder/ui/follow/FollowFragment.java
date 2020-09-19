@@ -1,6 +1,7 @@
 package com.example.reminder.ui.follow;
 
 
+import android.database.Cursor;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -14,15 +15,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.reminder.R;
 import com.example.reminder.adapter.AdapterEvent;
+import com.example.reminder.database.MyDatabaseHelper;
 import com.example.reminder.models.Event;
 
 import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -30,6 +34,7 @@ import java.util.TimerTask;
  * A simple {@link Fragment} subclass.
  */
 public class FollowFragment extends Fragment {
+    private MyDatabaseHelper helper;
     private RecyclerView recyclerView;
     private ArrayList<Event> list;
     private AdapterEvent adapter;
@@ -39,14 +44,17 @@ public class FollowFragment extends Fragment {
     private TextView textSecond;
     private  Timer timer;
     private  TimerTask timerTask;
+    private List<Event> listEvent;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_follow, container, false);
+        helper = new MyDatabaseHelper(getActivity());
         init(view);
         initEvent();
+        getAllData();
         return view;
     }
 
@@ -62,7 +70,7 @@ public class FollowFragment extends Fragment {
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),1));
         recyclerView.setAdapter(adapter);
         String a = "a";
-        list.add(new Event(1,"Đi xem phim cùng crush",a,a,a,a,a,a,a,a));
+        list.add(new Event(1,"Đi xem phim cùng crush",a,a,a,a,a,a,a,a,a,a));
 
 
 
@@ -90,6 +98,13 @@ public class FollowFragment extends Fragment {
             }
         }.start();
 
+    }
+
+    private void getAllData(){
+        //oke
+        listEvent = new ArrayList<>();
+        listEvent = helper.getAllEvent();
+        Toast.makeText(getActivity(), "Có tổng: "+listEvent.size(), Toast.LENGTH_SHORT).show();
     }
 
 

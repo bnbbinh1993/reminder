@@ -20,6 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.reminder.R;
 import com.example.reminder.database.MyDatabaseHelper;
+import com.example.reminder.models.Event;
 import com.example.reminder.utils.Binh;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
@@ -71,7 +72,9 @@ public class CreateActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(edtTitle.getText().toString().trim().equals("")){
-                    binh.showMessenger("Hãy bỏ đi mà làm người nha");
+                    binh.showMessenger("Hãy điền gì đó nha bạn");
+                }else {
+                    pushData();
                 }
                 
             }
@@ -141,6 +144,7 @@ public class CreateActivity extends AppCompatActivity {
     }
 
     private void setView() {
+        //có gì đó sai sai :))))
         tvRemind.setText(binh.getDataString("REMIND", "Trước 1 tuần"));
         tvCategory.setText(binh.getDataString("EVENT", "Sinh nhật"));
         tvDate.setText(binh.getDataString("DATE", "20/03/1999"));
@@ -363,8 +367,23 @@ public class CreateActivity extends AppCompatActivity {
 
 
     private void pushData() {
+
+
         String title = edtTitle.getText().toString().trim();
+        String description = edtDescription.getText().toString().trim();
         String category = tvCategory.getText().toString().trim();
+        String date = tvDate.getText().toString().trim();
+        String time = tvTime.getText().toString().trim();
+        String repeat = tvRepeat.getText().toString().trim();
+        String remind = tvRemind.getText().toString().trim();
+        String ring = tvRing.getText().toString().trim();
+        String theme = tvWallpaper.getText().toString().trim();
+        String ghim = "0";
+        String status = "Chưa hoàn thành";
+        Event event = new Event(1,title,description,category,date,time,repeat,remind,ring,theme,ghim,status);
+        dbHelper.addEventt(event);
+        finish();
+
 
 
     }

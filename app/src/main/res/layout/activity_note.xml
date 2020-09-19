@@ -1,9 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.work.ui.NoteActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+  <androidx.cardview.widget.CardView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content">
+      <RelativeLayout
+          android:padding="10dp"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical">
+          <ImageButton
+              android:background="?attr/actionBarItemBackground"
+              android:layout_marginEnd="10dp"
+              android:padding="10dp"
+              android:textColor="@color/black"
+              android:textSize="14sp"
+              android:id="@+id/btnBackNote"
+              android:src="@drawable/ic_back"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"/>
+
+          <ImageButton
+              android:background="?attr/actionBarItemBackground"
+              android:layout_marginEnd="10dp"
+              android:layout_alignParentEnd="true"
+              android:padding="10dp"
+              android:textColor="@color/black"
+              android:textSize="14sp"
+              android:id="@+id/btnAddNote"
+              android:src="@drawable/ic_add_red"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"/>
+
+      </RelativeLayout>
+  </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewNote"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

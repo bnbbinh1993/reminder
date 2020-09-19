@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
+import android.widget.Toast;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -54,8 +55,8 @@ public class Binh {
         dialog.show();
 
     }
-    public  void a(){
-       //heeaasdaassa a   sadasdas sa sa
+    public  void ToastMessenger(Context context, String content){
+        Toast.makeText(context, content, Toast.LENGTH_SHORT).show();
     }
 
 }
