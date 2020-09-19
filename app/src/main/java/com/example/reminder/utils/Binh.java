@@ -52,6 +52,10 @@ public class Binh {
         builder.setMessage(content);
         AlertDialog dialog = builder.create();
         dialog.show();
+
+    }
+    public  void a(){
+       //heeaasdaassa a   sadasdas sa sa
     }
 
 }
