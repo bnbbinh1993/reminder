@@ -1,7 +1,10 @@
 package com.example.reminder.utils;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.text.TextUtils;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -9,6 +12,7 @@ public class Binh {
     public static final String TAG = "BNB";
     private Context context;
     private SharedPreferences preferences;
+
 
     public Binh(Context context) {
         this.context = context;
@@ -37,4 +41,17 @@ public class Binh {
          String result = preferences.getString(name, er);
         return result;
     }
+    public void showMessenger(String content){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("Hí anh em");
+        builder.setPositiveButton("Close", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.dismiss();
+            }
+        });
+        builder.setMessage(content);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
 }

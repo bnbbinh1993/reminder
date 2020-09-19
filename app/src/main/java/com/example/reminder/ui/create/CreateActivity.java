@@ -2,6 +2,8 @@ package com.example.reminder.ui.create;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +13,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.reminder.R;
@@ -31,6 +35,7 @@ public class CreateActivity extends AppCompatActivity {
     private ImageView image_ring;
     private ImageView image_wallpaper;
     private EditText edtTitle;
+    private EditText edtDescription;
     private TextView tvSave;
     private TextView exitId;
     private TextView tvCategory;
@@ -59,14 +64,16 @@ public class CreateActivity extends AppCompatActivity {
         exitId.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                showDialog(String.valueOf(getText(R.string.MessengerDialog)));
             }
         });
         tvSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
+                if(edtTitle.getText().toString().trim().equals("")){
+                    binh.showMessenger("Hãy bỏ đi mà làm người nha");
+                }
+                
             }
         });
         tvCategory.setOnClickListener(new View.OnClickListener() {
@@ -81,7 +88,6 @@ public class CreateActivity extends AppCompatActivity {
                 setCategory();
             }
         });
-
         tvDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -164,6 +170,7 @@ public class CreateActivity extends AppCompatActivity {
         image_remind = findViewById(R.id.image_remind);
         image_ring = findViewById(R.id.image_ring);
         image_wallpaper = findViewById(R.id.image_wallpaper);
+        edtDescription = findViewById(R.id.edtDescription);
     }
 
     private void setCategory() {
@@ -362,4 +369,30 @@ public class CreateActivity extends AppCompatActivity {
 
     }
 
+
+    @Override
+    public void onBackPressed() {
+
+        showDialog(String.valueOf(getText(R.string.MessengerDialog)));
+    }
+
+    public void showDialog(String content){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(content)
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.setTitle("EXIT");
+        alertDialog.show();
+    }
 }
