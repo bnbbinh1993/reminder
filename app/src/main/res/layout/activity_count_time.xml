@@ -1,9 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="10dp"
     tools:context=".ui.work.ui.CountTImeActivity">
+    <TextView
+        android:id="@+id/tvHuy"
+        android:textColor="@color/black"
+        android:padding="15dp"
+        android:textSize="15sp"
+        android:text="Hủy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:visibility="visible"
+        android:id="@+id/layoutText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="7">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:layout_margin="10dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Giờ"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_margin="10dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Phút"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_margin="10dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Giây"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:visibility="visible"
+       android:minHeight="270dp"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/layoutText"
+        android:id="@+id/layoutNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="7">
+
+        <NumberPicker
+            android:layout_margin="10dp"
+            android:solidColor="@color/white"
+            android:selectionDividerHeight="15dp"
+            android:id="@+id/numberHaurs"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:theme="@style/NumberPickerTheme" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text=":"
+            android:textColor="@color/black"
+            android:textSize="40dp"
+            android:textStyle="normal" />
+
+        <NumberPicker
+            android:layout_margin="10dp"
+            android:solidColor="@color/white"
+            android:id="@+id/numberMinute"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:theme="@style/NumberPickerTheme" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text=":"
+            android:textColor="@color/black"
+            android:textSize="40dp"
+            android:textStyle="normal" />
+
+        <NumberPicker
+            android:layout_margin="10dp"
+            android:solidColor="@color/white"
+            android:id="@+id/numberSecond"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:theme="@style/NumberPickerTheme" />
+
+    </LinearLayout>
+
+    <include
+
+        android:layout_marginTop="50dp"
+        android:layout_below="@+id/tvHuy"
+        android:layout_centerInParent="true"
+        layout="@layout/layout_cirle"
+        android:layout_height="350dp"
+        android:layout_width="350dp" />
+
+    <Button
+        android:layout_centerInParent="true"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/btnStartCountTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="50dp"
+        android:background="@drawable/bg_button"
+        android:gravity="center"
+        android:text="Bắt đầu"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+</RelativeLayout>

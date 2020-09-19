@@ -322,6 +322,7 @@ public class CreateActivity extends AppCompatActivity {
     private void setRemind() {
         final BottomSheetDialog sheetDialog = new BottomSheetDialog(CreateActivity.this);
         View v = LayoutInflater.from(CreateActivity.this).inflate(R.layout.bottom_sheet_remind, null);
+
         TextView option1 = v.findViewById(R.id.option1);
         TextView option2 = v.findViewById(R.id.option2);
         TextView option3 = v.findViewById(R.id.option3);

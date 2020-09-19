@@ -78,9 +78,9 @@
        <androidx.recyclerview.widget.RecyclerView
            android:layout_marginStart="10dp"
            android:layout_marginEnd="10dp"
-           android:id="@+id/recylerviewTimeCount"
+           android:id="@+id/recylerviewTimeStopWatch"
            android:layout_width="match_parent"
-           android:layout_height="wrap_content"/>
+           android:layout_height="match_parent"/>
    </LinearLayout>
     <LinearLayout
         android:padding="10dp"
@@ -91,6 +91,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
+            android:id="@+id/btnStartStopWatch"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textAllCaps="false"
