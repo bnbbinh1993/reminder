@@ -2,52 +2,57 @@
 <LinearLayout
     android:background="@drawable/background_event"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_gravity="center"
-    android:gravity="center_vertical"
+
     android:padding="10dp"
-    android:layout_marginStart="25dp"
-    android:layout_marginEnd="25dp"
+    android:layout_marginStart="15dp"
+    android:layout_marginEnd="15dp"
     android:layout_marginBottom="5dp"
     android:layout_marginTop="5dp"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <ImageView
+        android:layout_marginTop="10dp"
+        android:id="@+id/icon_category"
         android:layout_marginStart="10dp"
-        android:background="@drawable/ic_favorite_green_blue"
-        android:layout_width="25dp"
-        android:layout_height="25dp"/>
+        android:src="@drawable/ic_favorite_green_blue"
+        android:layout_width="20dp"
+        android:layout_height="20dp"/>
     <LinearLayout
         android:layout_margin="10dp"
         android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <TextView
+            android:layout_gravity="center"
             android:id="@+id/nameEvent"
             android:textColor="@color/black"
-            android:padding="10dp"
+            android:paddingEnd="10dp"
+            android:paddingStart="10dp"
+            android:paddingBottom="5dp"
             android:textSize="15sp"
             android:textStyle="bold"
             android:text="Hihi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <TextView
+            android:id="@+id/timeEvent"
             android:textColor="@color/black"
             android:paddingEnd="10dp"
             android:paddingStart="10dp"
             android:textSize="12sp"
             android:textStyle="normal"
-            android:text="Hihi"
+            android:text="Hằng ngày - 23:35 - 23/09/2020"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <TextView
-            android:id="@+id/statuId"
+            android:id="@+id/statusId"
             android:textColor="@color/black"
             android:paddingEnd="10dp"
             android:paddingStart="10dp"
             android:textSize="12sp"
             android:textStyle="normal"
-            android:text="Đang diễn ra..."
+            android:text="3 ngày 10 giờ 30 phút 23 giay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </LinearLayout>

@@ -17,10 +17,10 @@ import java.util.List;
 
 public class AdapterHistory extends RecyclerView.Adapter<AdapterHistory.ViewHolder> {
     private Context context;
-    private List<History> list;
+    private List<Event> list;
 
 
-    public AdapterHistory(Context context, List<History> list) {
+    public AdapterHistory(Context context, List<Event> list) {
         this.context = context;
         this.list = list;
     }
@@ -33,9 +33,7 @@ public class AdapterHistory extends RecyclerView.Adapter<AdapterHistory.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
-        History model = list.get(position);
-        holder.nameEvent.setText(model.getTitle());
-        holder.statuId.setText(model.getStatus());
+
     }
 
     @Override
@@ -49,7 +47,7 @@ public class AdapterHistory extends RecyclerView.Adapter<AdapterHistory.ViewHold
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             nameEvent = itemView.findViewById(R.id.nameEvent);
-            statuId = itemView.findViewById(R.id.statuId);
+            statuId = itemView.findViewById(R.id.statusId);
 
         }
     }

@@ -18,8 +18,8 @@
                 android:layout_gravity="center"
                 android:gravity="center_vertical"
                 android:padding="15dp"
-                android:layout_marginEnd="25dp"
-                android:layout_marginStart="25dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginStart="15dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/background_event"
@@ -53,6 +53,8 @@
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
+                android:overScrollMode="never"
+                android:nestedScrollingEnabled="true"
                 android:id="@+id/recyclerviewHomeId"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

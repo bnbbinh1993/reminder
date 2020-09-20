@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.work.ui.ShowNoteActivity"></activity>
+        <activity android:name=".ui.setting.LoginActivity"></activity>
+        <activity android:name=".ui.work.ui.ShowNoteActivity" />
         <activity android:name=".ui.work.ui.CreateNoteActitivy" />
         <activity android:name=".ShowEventActivity" />
         <activity android:name=".ui.work.ui.NoteActivity" />
@@ -27,5 +28,7 @@
             </intent-filter>
         </activity>
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

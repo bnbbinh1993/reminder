@@ -1,31 +1,25 @@
 package com.example.reminder.ui.follow;
 
 
-import android.database.Cursor;
 import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.CountDownTimer;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.reminder.R;
 import com.example.reminder.adapter.AdapterEvent;
 import com.example.reminder.database.MyDatabaseHelper;
 import com.example.reminder.models.Event;
 
-import java.sql.Time;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -36,14 +30,15 @@ import java.util.TimerTask;
 public class FollowFragment extends Fragment {
     private MyDatabaseHelper helper;
     private RecyclerView recyclerView;
-    private ArrayList<Event> list;
+    private List<Event> list;
+    private List<Event> list2;
     private AdapterEvent adapter;
     private TextView textDay;
     private TextView textHour;
     private TextView textMunite;
     private TextView textSecond;
-    private  Timer timer;
-    private  TimerTask timerTask;
+    private Timer timer;
+    private TimerTask timerTask;
     private List<Event> listEvent;
 
     @Override
@@ -54,7 +49,6 @@ public class FollowFragment extends Fragment {
         helper = new MyDatabaseHelper(getActivity());
         init(view);
         initEvent();
-        getAllData();
         return view;
     }
 
@@ -64,25 +58,25 @@ public class FollowFragment extends Fragment {
         textMunite = view.findViewById(R.id.textMunite);
         textSecond = view.findViewById(R.id.textSecond);
         recyclerView = view.findViewById(R.id.recyclerviewHomeId);
-        list = new ArrayList<>();
-        adapter = new AdapterEvent(getContext(),list);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(),1));
-        recyclerView.setAdapter(adapter);
-        String a = "a";
-        list.add(new Event(1,"Đi xem phim cùng crush",a,a,a,a,a,a,a,a,a,a));
 
-
-
-        adapter.notifyDataSetChanged();
     }
-    private void initEvent(){
+
+    private void initEvent() {
 
         setTimer();
+        list = new ArrayList<>();
+        list2 = new ArrayList<>();
+        list = helper.getAllEvent();
+
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1));
+
+        getAllData();
 
     }
+
     private void setTimer() {
-        CountDownTimer count = new CountDownTimer(60000,1000) {
+        CountDownTimer count = new CountDownTimer(60000, 1000) {
             @Override
             public void onTick(long l) {
                 Calendar c = Calendar.getInstance();
@@ -90,6 +84,7 @@ public class FollowFragment extends Fragment {
                 textHour.setText(String.valueOf(c.get(Calendar.HOUR)));
                 textMunite.setText(String.valueOf(c.get(Calendar.MINUTE)));
                 textSecond.setText(String.valueOf(c.get(Calendar.SECOND)));
+                getAllData();
             }
 
             @Override
@@ -100,12 +95,51 @@ public class FollowFragment extends Fragment {
 
     }
 
-    private void getAllData(){
-        //oke
-        listEvent = new ArrayList<>();
-        listEvent = helper.getAllEvent();
-        Toast.makeText(getActivity(), "Có tổng: "+listEvent.size(), Toast.LENGTH_SHORT).show();
+    private void getAllData() {
+        list = helper.getAllEvent();
+        Collections.reverse(list);
+        list2.clear();
+        for (int i = 0;i<list.size();i++){
+            if (Integer.valueOf(list.get(i).getStatus())<2){
+                int id = list.get(i).getId();
+                String title = list.get(i).getTitle();
+                String description = list.get(i).getDescription();
+                String category =  list.get(i).getCategory();
+                String date =  list.get(i).getDate();
+                String time =  list.get(i).getTime();
+                String repeat =  list.get(i).getRepeat();
+                String remind =  list.get(i).getRemind();
+                String ring =  list.get(i).getRing();
+                String theme =  list.get(i).getTheme();
+                String ghim =  list.get(i).getGhim();
+                String status =  list.get(i).getStatus();
+                Event model = new Event(id,title,description,category,date,time,repeat,remind,ring,theme,ghim,status);
+                list2.add(model);
+            }
+        }
+
+
+        adapter = new AdapterEvent(getContext(), list2);
+        recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
 
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        getAllData();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        getAllData();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        getAllData();
+    }
 }

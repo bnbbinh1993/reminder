@@ -95,14 +95,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iconuserId"
                 android:layout_margin="5dp"
                 android:gravity="center"
                 android:layout_gravity="center"
-                android:background="@drawable/ic_user"
                 android:layout_width="35dp"
                 android:layout_height="35dp"/>
 
             <TextView
+                android:id="@+id/signinId"
                 android:layout_margin="5dp"
                 android:gravity="center"
                 android:layout_gravity="center"
@@ -112,6 +113,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <TextView
+                android:id="@+id/signoutId"
                 android:layout_margin="5dp"
                 android:gravity="center"
                 android:layout_gravity="center"

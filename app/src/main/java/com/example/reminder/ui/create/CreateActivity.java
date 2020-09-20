@@ -2,7 +2,6 @@ package com.example.reminder.ui.create;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,7 +22,10 @@ import com.example.reminder.models.Event;
 import com.example.reminder.utils.Binh;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class CreateActivity extends AppCompatActivity {
     private MyDatabaseHelper dbHelper;
@@ -51,6 +52,11 @@ public class CreateActivity extends AppCompatActivity {
     private TimePickerDialog timepickerdialog;
     private Binh binh = new Binh(this);
 
+    private String repeatString ="0";
+    private String  timeLong= "00:00:00";
+    private String  dateLong="20.03.1999";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +65,7 @@ public class CreateActivity extends AppCompatActivity {
         dbHelper = new MyDatabaseHelper(this);
         init();
         initEvent();
+
     }
 
     private void initEvent() {
@@ -71,12 +78,29 @@ public class CreateActivity extends AppCompatActivity {
         tvSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(edtTitle.getText().toString().trim().equals("")){
+                long milliseconds = 0;
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy, HH:mm");
+                simpleDateFormat.setLenient(false);
+                Date endDate;
+                String dateTime = dateLong + ", " + timeLong;
+                try {
+                    endDate = simpleDateFormat.parse(dateTime);
+                    milliseconds = endDate.getTime();
+
+                } catch (ParseException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                long startTime = System.currentTimeMillis();
+
+                if (edtTitle.getText().toString().trim().equals("")) {
                     binh.showMessenger("Hãy điền gì đó nha bạn");
+                } else if (startTime>milliseconds){
+                    binh.showMessenger("Hãy chọn thời gian trong tương lai");
                 }else {
                     pushData();
                 }
-                
+
             }
         });
         tvCategory.setOnClickListener(new View.OnClickListener() {
@@ -232,6 +256,8 @@ public class CreateActivity extends AppCompatActivity {
                 new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                        cldr.set(year, monthOfYear, dayOfMonth);
+                        dateLong = dayOfMonth + "." + (monthOfYear + 1) + "." + year;
                         tvDate.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
                         binh.SaveString("DATE", tvDate.getText().toString());
                     }
@@ -251,8 +277,10 @@ public class CreateActivity extends AppCompatActivity {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 if (view.isShown()) {
+
                     myCalender.set(Calendar.HOUR_OF_DAY, hourOfDay);
                     myCalender.set(Calendar.MINUTE, minute);
+                    timeLong = hourOfDay+":"+minute;
                     tvTime.setText(hourOfDay + ":" + minute);
                     binh.SaveString("TIME", tvTime.getText().toString());
                 }
@@ -279,6 +307,7 @@ public class CreateActivity extends AppCompatActivity {
         never.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                repeatString = "0";
                 tvRepeat.setText("Không bao giờ");
                 binh.SaveString("REPEAT", "Không bao giờ");
                 sheetDialog.dismiss();
@@ -287,6 +316,7 @@ public class CreateActivity extends AppCompatActivity {
         everyday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                repeatString = "1";
                 tvRepeat.setText("Hằng ngày");
                 binh.SaveString("REPEAT", "Hằng ngày");
                 sheetDialog.dismiss();
@@ -295,6 +325,7 @@ public class CreateActivity extends AppCompatActivity {
         everyweek.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                repeatString = "2";
                 binh.SaveString("REPEAT", "Hằng tuần");
                 tvRepeat.setText("Hằng tuần");
                 sheetDialog.dismiss();
@@ -303,6 +334,7 @@ public class CreateActivity extends AppCompatActivity {
         everymonth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                repeatString = "3";
                 tvRepeat.setText("Hằng tháng");
                 binh.SaveString("REPEAT", "Hằng tháng");
                 sheetDialog.dismiss();
@@ -311,6 +343,7 @@ public class CreateActivity extends AppCompatActivity {
         everyyear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                repeatString = "4";
                 tvRepeat.setText("Hằng năm");
                 binh.SaveString("REPEAT", "Hằng năm");
                 sheetDialog.dismiss();
@@ -369,22 +402,20 @@ public class CreateActivity extends AppCompatActivity {
 
     private void pushData() {
 
-
         String title = edtTitle.getText().toString().trim();
         String description = edtDescription.getText().toString().trim();
         String category = tvCategory.getText().toString().trim();
-        String date = tvDate.getText().toString().trim();
-        String time = tvTime.getText().toString().trim();
-        String repeat = tvRepeat.getText().toString().trim();
+        String date = String.valueOf(dateLong);
+        String time = String.valueOf(timeLong);
+        String repeat = repeatString;
         String remind = tvRemind.getText().toString().trim();
         String ring = tvRing.getText().toString().trim();
         String theme = tvWallpaper.getText().toString().trim();
         String ghim = "0";
-        String status = "Chưa hoàn thành";
-        Event event = new Event(1,title,description,category,date,time,repeat,remind,ring,theme,ghim,status);
+        String status = "0";
+        Event event = new Event(1, title, description, category, date, time, repeat, remind, ring, theme, ghim, status);
         dbHelper.addEventt(event);
         finish();
-
 
 
     }
@@ -396,7 +427,7 @@ public class CreateActivity extends AppCompatActivity {
         showDialog(String.valueOf(getText(R.string.MessengerDialog)));
     }
 
-    public void showDialog(String content){
+    public void showDialog(String content) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(content)
                 .setCancelable(false)
@@ -414,5 +445,6 @@ public class CreateActivity extends AppCompatActivity {
         AlertDialog alertDialog = builder.create();
         alertDialog.setTitle("EXIT");
         alertDialog.show();
+
     }
 }

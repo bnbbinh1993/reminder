@@ -142,12 +142,8 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     public int Update(Event event){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-
-        values.put(TITLE,event.getTitle());
-
+        values.put(STATUS,event.getStatus());
         return db.update(TABLE_NAME,values,ID +"=?",new String[] { String.valueOf(event.getId())});
-
-
     }
     public void deleteEvent(Event event) {
         SQLiteDatabase db = this.getWritableDatabase();
