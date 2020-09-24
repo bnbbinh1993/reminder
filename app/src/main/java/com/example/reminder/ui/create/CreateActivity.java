@@ -52,9 +52,9 @@ public class CreateActivity extends AppCompatActivity {
     private TimePickerDialog timepickerdialog;
     private Binh binh = new Binh(this);
 
-    private String repeatString ="0";
-    private String  timeLong= "00:00:00";
-    private String  dateLong="20.03.1999";
+    private String repeatString = "0";
+    private String timeLong = "00:00:00";
+    private String dateLong = "20.03.1999";
 
 
     @Override
@@ -95,9 +95,9 @@ public class CreateActivity extends AppCompatActivity {
 
                 if (edtTitle.getText().toString().trim().equals("")) {
                     binh.showMessenger("Hãy điền gì đó nha bạn");
-                } else if (startTime>milliseconds){
+                } else if (startTime > milliseconds) {
                     binh.showMessenger("Hãy chọn thời gian trong tương lai");
-                }else {
+                } else {
                     pushData();
                 }
 
@@ -280,7 +280,7 @@ public class CreateActivity extends AppCompatActivity {
 
                     myCalender.set(Calendar.HOUR_OF_DAY, hourOfDay);
                     myCalender.set(Calendar.MINUTE, minute);
-                    timeLong = hourOfDay+":"+minute;
+                    timeLong = hourOfDay + ":" + minute;
                     tvTime.setText(hourOfDay + ":" + minute);
                     binh.SaveString("TIME", tvTime.getText().toString());
                 }

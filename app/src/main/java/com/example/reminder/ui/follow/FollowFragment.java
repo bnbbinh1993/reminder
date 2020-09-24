@@ -1,6 +1,11 @@
 package com.example.reminder.ui.follow;
 
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.LayoutInflater;
@@ -8,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,6 +22,8 @@ import com.example.reminder.R;
 import com.example.reminder.adapter.AdapterEvent;
 import com.example.reminder.database.MyDatabaseHelper;
 import com.example.reminder.models.Event;
+import com.example.reminder.models.EventUI;
+import com.example.reminder.service.CountDownTimerService;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -23,6 +31,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import static android.Manifest.permission.FOREGROUND_SERVICE;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -40,13 +50,15 @@ public class FollowFragment extends Fragment {
     private Timer timer;
     private TimerTask timerTask;
     private List<Event> listEvent;
+    private ArrayList<Integer> listTime = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.fragment_follow, container, false);
         helper = new MyDatabaseHelper(getActivity());
+
+
         init(view);
         initEvent();
         return view;
@@ -99,21 +111,23 @@ public class FollowFragment extends Fragment {
         list = helper.getAllEvent();
         Collections.reverse(list);
         list2.clear();
-        for (int i = 0;i<list.size();i++){
-            if (Integer.valueOf(list.get(i).getStatus())<2){
+        for (int i = 0; i < list.size(); i++) {
+            if (Integer.valueOf(list.get(i).getStatus()) < 2) {
                 int id = list.get(i).getId();
                 String title = list.get(i).getTitle();
                 String description = list.get(i).getDescription();
-                String category =  list.get(i).getCategory();
-                String date =  list.get(i).getDate();
-                String time =  list.get(i).getTime();
-                String repeat =  list.get(i).getRepeat();
-                String remind =  list.get(i).getRemind();
-                String ring =  list.get(i).getRing();
-                String theme =  list.get(i).getTheme();
-                String ghim =  list.get(i).getGhim();
-                String status =  list.get(i).getStatus();
-                Event model = new Event(id,title,description,category,date,time,repeat,remind,ring,theme,ghim,status);
+                String category = list.get(i).getCategory();
+                String date = list.get(i).getDate();
+                String time = list.get(i).getTime();
+                String repeat = list.get(i).getRepeat();
+                String remind = list.get(i).getRemind();
+                String ring = list.get(i).getRing();
+                String theme = list.get(i).getTheme();
+                String ghim = list.get(i).getGhim();
+                String status = list.get(i).getStatus();
+
+
+                Event model = new Event(id, title, description, category, date, time, repeat, remind, ring, theme, ghim, status);
                 list2.add(model);
             }
         }
@@ -123,6 +137,8 @@ public class FollowFragment extends Fragment {
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }
+
+
 
 
     @Override
